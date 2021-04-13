@@ -1,0 +1,13 @@
+version: '2'
+
+networks:
+  kafka2clickhouse:
+   external: 
+    name: kafka2clickhouse
+
+services:
+  kafka-producer:
+    build: .
+    container_name: kafka-producer
+    networks:
+      - kafka2clickhouse

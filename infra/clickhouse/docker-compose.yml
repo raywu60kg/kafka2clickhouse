@@ -1,12 +1,15 @@
 version: '2'
 
 networks:
-  app-tier:
-   external: true
+  kafka2clickhouse:
+   external: 
+    name: kafka2clickhouse
+
 
 services:
   clickhouse-server:
     image: 'yandex/clickhouse-server:latest'
+    container_name: clickhouse-server
     networks:
-      - app-tier
+      - kafka2clickhouse
 

@@ -6,9 +6,9 @@
 create client
 ```
 docker run -it --rm \
-    --network app-tier \
-    -e KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper-server:2181 \
-    bitnami/kafka:latest kafka-topics.sh --list  --zookeeper zookeeper-server:2181
+    --network kafka2clickhouse \
+    -e KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181 \
+    bitnami/kafka:latest kafka-topics.sh --list  --zookeeper zookeeper:2181
 ```
 
 console test
