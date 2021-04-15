@@ -34,7 +34,7 @@ def main():
         # kafka produce
         try:
             message = {
-                "timestamp":datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M:%S"), 
+                "timestamp":int(datetime.now().timestamp()), 
                 "level": random.choice(["INFO", "ERROR", "DEBUG", "WARN"]), 
                 "message": ''.join(random.choice(string.ascii_lowercase) for i in range(10))
             }
