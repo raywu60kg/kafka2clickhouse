@@ -8,7 +8,7 @@ networks:
 
 services:
   clickhouse-server:
-    image: 'yandex/clickhouse-server:latest'
+    image: 'yandex/clickhouse-server:21.1-alpine'
     container_name: clickhouse-server
     networks:
       - kafka2clickhouse

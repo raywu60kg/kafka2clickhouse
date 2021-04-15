@@ -1,10 +1,11 @@
 from datetime import datetime
 from kafka import KafkaProducer
+import json
+import logging
 import os
 import random
 import string
 import time
-import logging
 
 logging.basicConfig(
     level=logging.INFO,
@@ -33,7 +34,7 @@ def main():
         # kafka produce
         try:
             message = {
-                "timestamp":datetime.now(), 
+                "timestamp":datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M:%S"), 
                 "level": random.choice(["INFO", "ERROR", "DEBUG", "WARN"]), 
                 "message": ''.join(random.choice(string.ascii_lowercase) for i in range(10))
             }
@@ -46,6 +47,7 @@ def main():
                     record_metadata.topic,
                     record_metadata.partition,
                     record_metadata.offset))
+            producer.flush()
         except Exception as e:
             logger.error("Kafka produce error: {}".format(e))
         logger.info("Sent message {}".format(message))
